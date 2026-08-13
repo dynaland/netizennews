@@ -3,7 +3,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Four-Quadrant Graph with Dot</title>
+  <title>About</title>
   <style>
     canvas {
       border: 1px solid black;
@@ -15,7 +15,7 @@
 <body>
   <h1>About</h1>
   <h2>Average Leanings</h2>
-  <p>placeholder text</p>
+  <p>Because our site's stories are crowdsourced, we poll users for their opinions to adjust our calculations. Below is our current average on the political compass.</p>
   <canvas id="graphCanvas" width="500" height="500"></canvas>
 
   <script>
@@ -24,9 +24,12 @@
   const ctx = canvas.getContext('2d');
 
   // Canvas dimensions
-  const width = canvas.width;
-  const height = canvas.height;
-
+  const width = 5;
+  const height = 5;
+ // Canvas dimensions original code
+ // const width = canvas.width;
+ // const height = canvas.height;
+    
   // Center of the canvas
   const centerX = width / 2;
   const centerY = height / 2;
