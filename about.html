@@ -1,0 +1,73 @@
+<!-- language: JavaScript -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Four-Quadrant Graph with Dot</title>
+  <style>
+    canvas {
+      border: 1px solid black;
+      display: block;
+      margin: 20px auto;
+    }
+  </style>
+</head>
+<body>
+  <h1>About</h1>
+  <h2>Average Leanings</h2>
+  <p>placeholder text</p>
+  <canvas id="graphCanvas" width="500" height="500"></canvas>
+
+  <script>
+  // Get the canvas and context
+  const canvas = document.getElementById('graphCanvas');
+  const ctx = canvas.getContext('2d');
+
+  // Canvas dimensions
+  const width = canvas.width;
+  const height = canvas.height;
+
+  // Center of the canvas
+  const centerX = width / 2;
+  const centerY = height / 2;
+
+  // Draw X and Y axes
+  ctx.beginPath();
+  ctx.moveTo(0, centerY);
+  ctx.lineTo(width, centerY);
+  ctx.moveTo(centerX, 0);
+  ctx.lineTo(centerX, height);
+  ctx.strokeStyle = 'black';
+  ctx.lineWidth = 2;
+  ctx.stroke();
+
+  // Draw quadrants labels
+  ctx.font = '16px Arial';
+  ctx.fillStyle = 'black';
+  ctx.fillText('Authoritarian Right', centerX + 50, 30);
+  ctx.fillText('Authoritarian Left', 10, 30);
+  ctx.fillText('Libertarian Left', 10, height - 10);
+  ctx.fillText('Libertarian Right', centerX + 50, height - 10);
+
+  // Function to plot a dot
+  function plotDot(x, y, color = 'red') {
+    // Convert Cartesian coordinates to canvas coordinates
+    const canvasX = centerX + x;
+    const canvasY = centerY - y;
+
+    ctx.beginPath();
+    ctx.arc(canvasX, canvasY, 5, 0, 2 * Math.PI);
+    ctx.fillStyle = color;
+    ctx.fill();
+  }
+
+  // Example: plot a dot at (100, 80)
+  plotDot(100, 80);
+
+  // Optional: plot additional dots for demonstration
+  plotDot(-60, 120, 'blue');  // Quadrant II
+  plotDot(-100, -50, 'green'); // Quadrant III
+  plotDot(80, -90, 'purple'); // Quadrant IV
+  </script>
+</body>
+</html>
